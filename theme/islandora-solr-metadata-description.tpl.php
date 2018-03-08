@@ -11,7 +11,7 @@
  * @see template_process_islandora_solr_metadata_description()
  */
 ?>
-<?php dsm(reset($description), "reset description"); ?>
+
 <?php if ($found && !empty($description)): ?>
   <div class="islandora-solr-metadata-sidebar">
     <?php if ($combine): ?>
