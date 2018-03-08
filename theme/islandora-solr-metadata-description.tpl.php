@@ -11,14 +11,18 @@
  * @see template_process_islandora_solr_metadata_description()
  */
 ?>
+<?php dsm(reset($description), "reset description"); ?>
 <?php if ($found && !empty($description)): ?>
   <div class="islandora-solr-metadata-sidebar">
     <?php if ($combine): ?>
-      <h2><?php if (count($description) > 1):
-        print (t('Description'));
+      <?php if (count($description) > 1):
+        print ('<h2>' . t('Description') . '</h2>');
         else:
         $desc_array = reset($description);
-        print ($desc_array['display_label']); ?>
+        if (!empty($desc_array['display_label'])) {
+          print '<h2>' . $desc_array['display_label']  . '</h2>';
+        }
+         ?>
         <?php endif; ?></h2>
       <?php foreach($description as $value): ?>
         <p property="description"><?php print check_markup(implode($variables['separator'], $value['value']), 'islandora_solr_metadata_filtered_html'); ?></p>
